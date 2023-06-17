@@ -34,9 +34,16 @@ namespace racman
         public uint moviesFlags => throw new NotImplementedException();
 
         public uint unlockArray => throw new NotImplementedException();
+
+        // Autosplitter stuff
+        public uint mapTimer => 0xEB3D04;
+        public uint checkpointTimer => 0xE473B0;
+        public uint onLoad => 0xE473C3;
+        public uint planet => 0xEF7F13;
+        public uint loadingPlanet => 0xE897B7;
     }
 
-    public class acit : IGame
+    public class acit : IGame, IAutosplitterAvailable
     {
         public dynamic Planets = new
         {
@@ -65,6 +72,15 @@ namespace racman
         };
 
         public static ACITAddresses addr = new ACITAddresses();
+
+        public IEnumerable<(uint addr, uint size)> AutosplitterAddresses => new (uint, uint)[]
+        {
+            (addr.mapTimer, 4),
+            (addr.checkpointTimer, 4),
+            (addr.onLoad, 1),
+            (addr.planet, 1),
+            (addr.loadingPlanet, 1)
+        };
 
         public acit(Ratchetron api) : base(api)
         {
