@@ -94,7 +94,7 @@ namespace racman
 
         private void switchGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.AttachPS3Form.Show();
+            Program.AttachGameForm.Show();
             Close();
         }
 

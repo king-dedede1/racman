@@ -227,7 +227,7 @@ namespace racman
         private void switchGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormClosing -= Form1_FormClosing;
-            Program.AttachPS3Form.Show();
+            Program.AttachGameForm.Show();
             Close();
         }
 

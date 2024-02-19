@@ -288,7 +288,7 @@ namespace racman
     }
 
     // Functions injected into the Lua state
-    class LuaFunctions
+    public class LuaFunctions
     {
         public string ModName;
         public LuaAutomationTimer timer;
@@ -523,7 +523,7 @@ namespace racman
         }
     }
 
-    class LuaAutomationTimer : System.Timers.Timer
+    public class LuaAutomationTimer : System.Timers.Timer
     {
         public Lua State;
         public LuaFunction TickFunction;

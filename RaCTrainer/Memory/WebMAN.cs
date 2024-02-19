@@ -126,6 +126,11 @@ namespace racman
             get_data($"http://{ip}/xmb.ps3$rsx_continue");
         }
 
+        public string CPURSX()
+        {
+            return get_data($"http://{ip}/cpursx.ps3");
+        }
+
         public override int SubMemory(int pid, uint address, uint size, MemoryCondition condition, byte[] memory, Action<byte[]> callback)
         {
             throw new NotImplementedException();

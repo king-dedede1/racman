@@ -27,11 +27,13 @@ namespace racman
             Start();
         }
 
-        public static Form AttachPS3Form;
+        public static Racman racman;
+        public static AttachGameForm AttachGameForm;
         public static void Start()
         {
-            AttachPS3Form = new AttachPS3Form();
-            Application.Run(AttachPS3Form);
+            racman = new Racman();
+            racman.ShowConnectDialog();
+            Application.Run(racman.MainForm);
         }
     }
 }
