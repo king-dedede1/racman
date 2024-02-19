@@ -1,5 +1,5 @@
 -- Helper methods to make working with the API easier.
-require 'Converter'
+require 'Convert'
 
 Memory = {}
 
@@ -19,9 +19,9 @@ Memory.WriteFloat = function(addr, float)
 end
 
 Memory.WriteByte = function(addr, byte)
-    API:WriteMemory(addr, TableToByteArray({byte}))
+    API:WriteMemory(addr, Convert.TableToByteArray({byte}))
 end
 
 Memory.WriteTable = function(addr, table)
-    API:WriteMemory(addr, TableToByteArray(table))
+    API:WriteMemory(addr, Convert.TableToByteArray(table))
 end

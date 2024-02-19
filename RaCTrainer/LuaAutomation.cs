@@ -293,6 +293,11 @@ namespace racman
         public string ModName;
         public LuaAutomationTimer timer;
 
+        public static byte[] ReverseArray(byte[] arr)
+        {
+            return arr.Reverse().ToArray();
+        }
+
         public void Print(string text)
         {
             Console.WriteLine($"[{ModName}] {text}");

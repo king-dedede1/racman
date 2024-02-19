@@ -65,21 +65,22 @@ namespace racman
         }
 
         // maybe move this somewhere else?
-        public static byte[] ReverseArray(byte[] arr)
-        {
-            return arr.Reverse().ToArray();
-        }
+        
 
         void InitLuaState()
         {
             lua = new Lua();
 
-            // TODO add the interop functions here I think
+            // Allow loading .NET assemblies.
             lua.LoadCLRPackage();
-            lua.RegisterFunction("TableToByteArray", typeof(LuaFunctions).GetMethod("LuaTableToByteArray"));
-            lua.RegisterFunction("IntToBytes", typeof(BitConverter).GetMethod("GetBytes", new Type[] { typeof(int) }));
-            lua.RegisterFunction("FloatToBytes", typeof(BitConverter).GetMethod("GetBytes", new Type[] { typeof(float) }));
-            lua.RegisterFunction("ReverseArray", typeof(Racman).GetMethod("ReverseArray"));
+
+            EvalLua("Convert = {}");
+
+            // Putting these functions here because calling them directly from lua doesn't seem to be possible.
+            lua.RegisterFunction("Convert.TableToByteArray", typeof(LuaFunctions).GetMethod("LuaTableToByteArray"));
+            lua.RegisterFunction("Convert.IntToByteArray", typeof(LuaFunctions).GetMethod("IntToByteArray"));
+            lua.RegisterFunction("Convert.FloatToByteArray", typeof(BitConverter).GetMethod("GetBytes", new Type[] { typeof(float) }));
+            lua.RegisterFunction("Convert.ReverseArray", typeof(LuaFunctions).GetMethod("ReverseArray"));
             lua["API"] = api;
             lua["Racman"] = this;
 
@@ -95,6 +96,8 @@ namespace racman
             }
 
             // Prevent user scripts from loading .NET assemblies for security
+            // If there's something that can only be done by loading an assembly, it should
+            // probably be included in the racman scripts anyway
             EvalLua("import = function() end");
 
             // Load game libraries/scripts

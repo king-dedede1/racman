@@ -421,7 +421,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="scripts\game\NPEA00387\Common.lua" />
-    <None Include="scripts\racman\Converter.lua" />
+    <None Include="scripts\racman\Console.lua" />
+    <None Include="scripts\racman\Convert.lua" />
+    <None Include="scripts\racman\Memory.lua" />
+    <None Include="scripts\racman\Timing.lua" />
     <None Include="scripts\racman\Trainer.lua" />
     <None Include="usr\Any%25.usr">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

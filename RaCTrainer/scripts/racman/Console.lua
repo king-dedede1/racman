@@ -14,3 +14,7 @@ end
 Console.Error = function(text)
     Racman.consoleForm:Error(text)
 end
+
+Console.Clear = function()
+    Racman.consoleForm.Controls[2].Text = ""
+end
